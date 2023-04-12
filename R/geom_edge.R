@@ -148,7 +148,7 @@ GeomEdgePath <- ggproto('GeomEdgePath', GeomPath,
         x0 = label_x0, y0 = label_y0, x1 = label_x1, y1 = label_y1,
         force.rot = force_flip, dodge = label_dodge, push = label_push
       )
-      gList(edge_grob, label_grob)
+      gTree(children=gList(edge_grob, label_grob))
     } else {
       edge_grob
     }
