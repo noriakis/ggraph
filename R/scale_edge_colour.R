@@ -15,6 +15,26 @@
 #'
 NULL
 
+#' @rdname scale_label_colour
+#'
+#' @inheritParams ggplot2::scale_colour_hue
+#'
+#' @export
+scale_label_colour_hue <- function(..., h = c(0, 360) + 15, c = 100, l = 65, h.start = 0,
+                                  direction = 1, na.value = "grey50", aesthetics = "label_colour") {
+  scale_colour_hue(..., h = h, c = c, l = l, h.start = h.start,
+                   direction = direction, na.value = na.value, aesthetics = aesthetics)
+}
+#' @rdname scale_label_colour
+#'
+#' @inheritParams ggplot2::scale_colour_manual
+#'
+#' @export
+scale_label_colour_manual <- function(..., values, aesthetics = "label_colour", breaks = waiver(), na.value = "grey50") {
+  scale_colour_manual(..., values = values, aesthetics = aesthetics, breaks = breaks,
+                      na.value = na.value)
+}
+
 #' @rdname scale_edge_colour
 #'
 #' @inheritParams ggplot2::scale_colour_hue

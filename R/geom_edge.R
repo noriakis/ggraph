@@ -9,7 +9,7 @@ GeomEdgePath <- ggproto('GeomEdgePath', GeomPath,
   draw_panel = function(self, data, panel_scales, coord, arrow = NULL,
                         lineend = 'butt', linejoin = 'round', linemitre = 1,
                         na.rm = FALSE, interpolate = TRUE,
-                        label_colour = 'black', label_alpha = 1, label_parse = FALSE,
+                        label_alpha = 1, label_parse = FALSE,
                         check_overlap = FALSE, angle_calc = 'none', force_flip = TRUE,
                         label_dodge = NULL, label_push = NULL) {
     if (!anyDuplicated(data$group)) {
@@ -105,11 +105,15 @@ GeomEdgePath <- ggproto('GeomEdgePath', GeomPath,
       label_pos <- 1 + floor((edge_length - 1) * label_pos)
       label_ind <- edge_start + label_pos
       label_data <- data[label_ind, ]
-      label_data$label_colour <- if (is.na(label_colour)) {
-        label_data$edge_colour
-      } else {
-        label_colour
-      }
+      # if (length(label_colour)>1) {
+      #   label_data$label_colour <- label_colour
+      # } else {
+      #   label_data$label_colour <- if (is.na(label_colour)) {
+      #     label_data$edge_colour
+      #   } else {
+      #     label_colour
+      #   }        
+      # }
       label_data$label_alpha <- if (is.na(label_alpha)) {
         label_data$edge_alpha
       } else {
@@ -154,15 +158,25 @@ GeomEdgePath <- ggproto('GeomEdgePath', GeomPath,
     }
   },
   draw_key = function(data, params, size) {
-    segmentsGrob(0.1, 0.5, 0.9, 0.5,
+    # segmentsGrob(0.1, 0.5, 0.9, 0.5,
+    #   gp = gpar(
+    #     col = alpha(data$edge_colour, data$edge_alpha),
+    #     fill = alpha(params$arrow.fill %||% data$edge_colour
+    #                  %||% data$edge_fill %||% "black", data$edge_alpha),
+    #     lwd = data$edge_width * .pt,
+    #     lty = data$edge_linetype, lineend = 'butt'
+    #   ),
+    #   arrow = params$arrow
+    # )
+    textGrob("a", 0.5, 0.5,
       gp = gpar(
-        col = alpha(data$edge_colour, data$edge_alpha),
-        fill = alpha(params$arrow.fill %||% data$edge_colour
-                     %||% data$edge_fill %||% "black", data$edge_alpha),
+        col = alpha(data$label_colour, 1),
+        # fill = alpha(params$arrow.fill %||% data$edge_colour
+        #              %||% data$edge_fill %||% "black", data$edge_alpha),
         lwd = data$edge_width * .pt,
         lty = data$edge_linetype, lineend = 'butt'
       ),
-      arrow = params$arrow
+      # arrow = params$arrow
     )
   },
   handle_na = function(self, data, params) {
@@ -193,7 +207,7 @@ GeomEdgePath <- ggproto('GeomEdgePath', GeomPath,
     edge_alpha = NA, start_cap = NA, end_cap = NA, label = NA,
     label_pos = 0.5, label_size = 3.88, angle = 0,
     hjust = 0.5, vjust = 0.5, family = '', fontface = 1,
-    lineheight = 1.2
+    lineheight = 1.2, label_colour = "black"
   )
 )
 #' @rdname ggraph-extensions

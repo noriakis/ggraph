@@ -40,3 +40,40 @@ guide_edge_coloursteps <- function(even.steps = TRUE, show.limits = NULL, ticks 
 #' @rdname guide_edge_coloursteps
 #' @export
 guide_edge_colorsteps <- guide_edge_coloursteps
+
+#' Colourbar legend for edges
+#'
+#' This function is equivalent to [ggplot2::guide_colourbar()] but
+#' works for edge aesthetics.
+#'
+#' @inheritParams ggplot2::guide_colourbar
+#' @inheritDotParams ggplot2::guide_colourbar
+#'
+#' @return A guide object
+#'
+#' @export
+guide_label_colourbar <- function(..., available_aes = c("label_colour")) {
+  guide <- guide_colourbar(..., available_aes = available_aes)
+  guide$name <- 'label_colourbar'
+  guide
+}
+
+#' Coloursteps legend for edges
+#'
+#' This function is equivalent to [ggplot2::guide_coloursteps()] but
+#' works for edge aesthetics.
+#'
+#' @inheritParams ggplot2::guide_coloursteps
+#' @inheritParams ggplot2::guide_colourbar
+#' @inheritDotParams ggplot2::guide_colourbar
+#'
+#' @return A guide object
+#'
+#' @export
+guide_label_coloursteps <- function(even.steps = TRUE, show.limits = NULL, ticks = FALSE, ...,
+                                   available_aes = c("label_colour")) {
+  guide <- guide_coloursteps(even.steps = even.steps, show.limits = show.limits,
+                             ticks = ticks, ..., available_aes = available_aes)
+  guide$name <- 'label_coloursteps'
+  guide
+}
