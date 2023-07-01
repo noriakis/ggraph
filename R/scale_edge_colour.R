@@ -25,6 +25,7 @@ scale_label_colour_hue <- function(..., h = c(0, 360) + 15, c = 100, l = 65, h.s
   scale_colour_hue(..., h = h, c = c, l = l, h.start = h.start,
                    direction = direction, na.value = na.value, aesthetics = aesthetics)
 }
+
 #' @rdname scale_label_colour
 #'
 #' @inheritParams ggplot2::scale_colour_manual

@@ -17,6 +17,8 @@ DataFrame pathAttr(DataFrame paths, int ngroups) {
   LogicalVector lty_na = is_na(lty);
   CharacterVector colour = paths["edge_colour"];
   LogicalVector colour_na = is_na(colour);
+  CharacterVector lcolour = paths["label_colour"];
+  LogicalVector lcolour_na = is_na(lcolour);
 
   currentGroup = group[0];
   currentIndex = 0;
@@ -31,7 +33,8 @@ DataFrame pathAttr(DataFrame paths, int ngroups) {
           ((alpha[i] == alpha[i-1]) || (alpha_na[i] && alpha_na[i-1])) &&
           ((width[i] == width[i-1]) || (width_na[i] && width_na[i-1])) &&
           ((lty[i] == lty[i-1]) || (lty_na[i] && lty_na[i-1])) &&
-          ((colour[i] == colour[i-1]) || (colour_na[i] && colour_na[i-1]));
+          ((colour[i] == colour[i-1]) || (colour_na[i] && colour_na[i-1])) &&
+          ((lcolour[i] == lcolour[i-1]) || (lcolour_na[i] && lcolour_na[i-1]));
       }
     } else {
       currentGroup = group[i];

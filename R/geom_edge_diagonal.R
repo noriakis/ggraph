@@ -150,6 +150,46 @@ geom_edge_diagonal <- function(mapping = NULL, data = get_edges(),
     )
   )
 }
+
+
+#' @rdname geom_edge_diagonal
+#'
+#' @export
+geom_edge_label_diagonal <- function(mapping = NULL, data = get_edges(),
+                               position = 'identity', arrow = NULL, strength = 1,
+                               flipped = FALSE, n = 100, lineend = 'butt',
+                               linejoin = 'round', linemitre = 1,
+                               # label_colour = 'black',
+                               label_alpha = 1, bg.colour="white", bg.r=0.1,
+                               label_parse = FALSE, check_overlap = FALSE,
+                               angle_calc = 'rot', force_flip = TRUE,
+                               label_dodge = NULL, label_push = NULL,
+                               show.legend = NA, ...) {
+  mapping <- complete_edge_aes(mapping)
+  mapping <- aes_intersect(mapping, aes(
+    x = x, y = y, xend = xend, yend = yend,
+    circular = circular, group = edge.id
+  ))
+  layer(
+    data = data, mapping = mapping, stat = StatEdgeDiagonal,
+    geom = GeomEdgeLabel, position = position, show.legend = show.legend,
+    inherit.aes = FALSE,
+    params = expand_edge_aes(
+      list(
+        arrow = arrow, lineend = lineend, linejoin = linejoin,
+        linemitre = linemitre, na.rm = FALSE, n = n,
+        interpolate = FALSE, flipped = flipped, strength = strength,
+        # label_colour = label_colour,
+        label_alpha = label_alpha, bg.colour=bg.colour, bg.r=bg.r,
+        label_parse = label_parse, check_overlap = check_overlap,
+        angle_calc = angle_calc, force_flip = force_flip,
+        label_dodge = label_dodge, label_push = label_push, ...
+      )
+    )
+  )
+}
+
+
 #' @rdname ggraph-extensions
 #' @format NULL
 #' @usage NULL

@@ -17,6 +17,7 @@
 \alias{StatConnBundle}
 \alias{StatConnBundle2}
 \alias{StatConnBundle0}
+\alias{GeomEdgeLabel}
 \alias{GeomEdgePath}
 \alias{GeomEdgeParallelPath}
 \alias{GeomEdgeSegment}

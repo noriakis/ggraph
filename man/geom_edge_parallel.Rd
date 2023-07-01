@@ -16,7 +16,6 @@ geom_edge_parallel(
   lineend = "butt",
   linejoin = "round",
   linemitre = 1,
-  label_colour = "black",
   label_alpha = 1,
   label_parse = FALSE,
   check_overlap = FALSE,
@@ -88,9 +87,6 @@ settings of the adjustment.}
 
 \item{linemitre}{Line mitre limit (number greater than 1).}
 
-\item{label_colour}{The colour of the edge label. If \code{NA} it will use
-the colour of the edge.}
-
 \item{label_alpha}{The opacity of the edge label. If \code{NA} it will use
 the opacity of the edge.}
 
@@ -127,6 +123,9 @@ display.}
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
+
+\item{label_colour}{The colour of the edge label. If \code{NA} it will use
+the colour of the edge.}
 }
 \description{
 This geom draws multi edges as parallel lines. The edges are first sorted by

@@ -2,6 +2,7 @@
 % Please edit documentation in R/geom_edge_diagonal.R
 \name{geom_edge_diagonal}
 \alias{geom_edge_diagonal}
+\alias{geom_edge_label_diagonal}
 \alias{geom_edge_diagonal2}
 \alias{geom_edge_diagonal0}
 \title{Draw edges as diagonals}
@@ -17,8 +18,31 @@ geom_edge_diagonal(
   lineend = "butt",
   linejoin = "round",
   linemitre = 1,
-  label_colour = "black",
   label_alpha = 1,
+  label_parse = FALSE,
+  check_overlap = FALSE,
+  angle_calc = "rot",
+  force_flip = TRUE,
+  label_dodge = NULL,
+  label_push = NULL,
+  show.legend = NA,
+  ...
+)
+
+geom_edge_label_diagonal(
+  mapping = NULL,
+  data = get_edges(),
+  position = "identity",
+  arrow = NULL,
+  strength = 1,
+  flipped = FALSE,
+  n = 100,
+  lineend = "butt",
+  linejoin = "round",
+  linemitre = 1,
+  label_alpha = 1,
+  bg.colour = "white",
+  bg.r = 0.1,
   label_parse = FALSE,
   check_overlap = FALSE,
   angle_calc = "rot",
@@ -95,9 +119,6 @@ mapping of x, y etc?}
 
 \item{linemitre}{Line mitre limit (number greater than 1).}
 
-\item{label_colour}{The colour of the edge label. If \code{NA} it will use
-the colour of the edge.}
-
 \item{label_alpha}{The opacity of the edge label. If \code{NA} it will use
 the opacity of the edge.}
 
@@ -134,6 +155,9 @@ display.}
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
+
+\item{label_colour}{The colour of the edge label. If \code{NA} it will use
+the colour of the edge.}
 }
 \description{
 This geom draws edges as diagonal bezier curves. The name comes from D3.js
