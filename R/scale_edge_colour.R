@@ -183,6 +183,8 @@ scale_edge_colour_fermenter <- function(..., type = "seq", palette = 1, directio
   scale_colour_fermenter(..., type = type, palette = palette, direction = direction,
                       na.value = na.value, guide = guide, aesthetics = aesthetics)
 }
+scale_label_color_hue <- scale_label_colour_hue
+
 #' @rdname scale_edge_colour
 #'
 #' @export
