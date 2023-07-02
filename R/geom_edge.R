@@ -361,26 +361,26 @@ GeomEdgePath <- ggproto('GeomEdgePath', GeomPath,
     }
   },
   draw_key = function(data, params, size) {
-    # segmentsGrob(0.1, 0.5, 0.9, 0.5,
-    #   gp = gpar(
-    #     col = alpha(data$edge_colour, data$edge_alpha),
-    #     fill = alpha(params$arrow.fill %||% data$edge_colour
-    #                  %||% data$edge_fill %||% "black", data$edge_alpha),
-    #     lwd = data$edge_width * .pt,
-    #     lty = data$edge_linetype, lineend = 'butt'
-    #   ),
-    #   arrow = params$arrow
-    # )
-    textGrob("a", 0.5, 0.5,
+    segmentsGrob(0.1, 0.5, 0.9, 0.5,
       gp = gpar(
-        col = alpha(data$label_colour, 1),
-        # fill = alpha(params$arrow.fill %||% data$edge_colour
-        #              %||% data$edge_fill %||% "black", data$edge_alpha),
+        col = alpha(data$edge_colour, data$edge_alpha),
+        fill = alpha(params$arrow.fill %||% data$edge_colour
+                     %||% data$edge_fill %||% "black", data$edge_alpha),
         lwd = data$edge_width * .pt,
         lty = data$edge_linetype, lineend = 'butt'
       ),
-      # arrow = params$arrow
+      arrow = params$arrow
     )
+    # textGrob("a", 0.5, 0.5,
+    #   gp = gpar(
+    #     col = alpha(data$label_colour, 1),
+    #     # fill = alpha(params$arrow.fill %||% data$edge_colour
+    #     #              %||% data$edge_fill %||% "black", data$edge_alpha),
+    #     lwd = data$edge_width * .pt,
+    #     lty = data$edge_linetype, lineend = 'butt'
+    #   ),
+    #   # arrow = params$arrow
+    # )
   },
   handle_na = function(self, data, params) {
     if (params$interpolate) {
@@ -440,7 +440,7 @@ GeomEdgeParallelPath <- ggproto('GeomEdgeParallelPath', GeomEdgePath,
                                      label_dodge = label_dodge,
                                      label_push = label_push)
     ## if panel returns gTree
-    if (inherits(panel, 'gTree')) {
+    if (inherits(panel, 'gTree') & ! "cappedpathgrob" %in% class(panel)) {
       child <- panel$children
       # child[[1]]$sep <- (data$.position * sep)[child[[1]]$id]
       child[[1]]$sep <- (data$.position[!duplicated(data$group)] * sep)[child[[1]]$id]
