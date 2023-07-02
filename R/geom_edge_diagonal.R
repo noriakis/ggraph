@@ -132,7 +132,7 @@ geom_edge_diagonal <- function(mapping = NULL, data = get_edges(),
     x = x, y = y, xend = xend, yend = yend,
     circular = circular, group = edge.id
   ))
-  layer(
+  list(layer(
     data = data, mapping = mapping, stat = StatEdgeDiagonal,
     geom = GeomEdgePath, position = position, show.legend = show.legend,
     inherit.aes = FALSE,
@@ -148,7 +148,7 @@ geom_edge_diagonal <- function(mapping = NULL, data = get_edges(),
         label_dodge = label_dodge, label_push = label_push, ...
       )
     )
-  )
+  ))
 }
 
 
