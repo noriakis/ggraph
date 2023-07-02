@@ -15,6 +15,17 @@
 #'
 NULL
 
+#' @rdname scale_edge_colour
+#'
+#' @inheritParams ggplot2::scale_colour_gradient
+#'
+#' @export
+scale_label_colour_gradient <- function(..., low = "#132B43", high = "#56B1F7", space = "Lab",
+                                       na.value = "grey50", guide = "label_colourbar",
+                                       aesthetics = "label_colour") {
+  scale_colour_gradient(..., low = low, high = high, space = space, na.value = na.value,
+                        guide = guide, aesthetics = aesthetics)
+}
 #' @rdname scale_label_colour
 #'
 #' @inheritParams ggplot2::scale_colour_hue
@@ -184,6 +195,8 @@ scale_edge_colour_fermenter <- function(..., type = "seq", palette = 1, directio
                       na.value = na.value, guide = guide, aesthetics = aesthetics)
 }
 scale_label_color_hue <- scale_label_colour_hue
+scale_label_colour_discrete <- scale_label_colour_hue
+scale_label_colour_continuous <- scale_label_colour_gradient
 
 #' @rdname scale_edge_colour
 #'
