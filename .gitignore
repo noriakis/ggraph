@@ -8,3 +8,4 @@ src/*.dll
 .Rbuildignore
 inst/doc
 docs/
+*.xml
