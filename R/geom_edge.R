@@ -522,13 +522,15 @@ GeomEdgeSpanPath <- ggproto('GeomEdgeSpanPath', GeomEdgePath,
   draw_panel = function(data, panel_scales, coord, arrow = NULL, end_shape = NA,
                         lineend = 'butt', linejoin = 'round', linemitre = 1,
                         na.rm = FALSE, interpolate = TRUE,
-                        label_colour = 'black', label_alpha = 1, label_parse = FALSE,
+                        # label_colour = 'black',
+                        label_alpha = 1, label_parse = FALSE,
                         check_overlap = FALSE, angle_calc = 'none', force_flip = TRUE,
                         label_dodge = NULL, label_push = NULL) {
     panel <- GeomEdgePath$draw_panel(data, panel_scales, coord, arrow = arrow,
                                      lineend = lineend, linejoin = linejoin, linemitre = linemitre,
                                      na.rm = na.rm, interpolate = interpolate,
-                                     label_colour = label_colour, label_alpha = label_alpha, label_parse = label_parse,
+                                     # label_colour = label_colour,
+                                     label_alpha = label_alpha, label_parse = label_parse,
                                      check_overlap = FALSE, angle_calc = 'none', force_flip = TRUE,
                                      label_dodge = label_dodge, label_push = label_push)
     if (is.na(end_shape)) return(panel)
